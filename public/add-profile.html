@@ -1,66 +1,132 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Your Profile - TechWomen Moldova</title>
-    <link rel="stylesheet" href="/src/css/main.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>TechWomen Moldova</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Your Profile - TechWomen Moldova</title>
+        <link rel="stylesheet" href="/src/css/main.css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>TechWomen Moldova</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="mentors.html" class="nav-link">Mentors</a></li>
+                    <li><a href="mentees.html" class="nav-link">Mentees</a></li>
+                    <li>
+                        <a href="testimonials.html" class="nav-link"
+                            >Testimonials</a
+                        >
+                    </li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li>
+                        <a
+                            href="add-profile.html"
+                            class="nav-link nav-cta active"
+                            >Add Your Profile</a
+                        >
+                    </li>
+                </ul>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="mentors.html" class="nav-link">Mentors</a></li>
-                <li><a href="mentees.html" class="nav-link">Mentees</a></li>
-                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="add-profile.html" class="nav-link nav-cta active">Add Your Profile</a></li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
 
-    <main>
-        <div class="container">
-            <h1 style="text-align: center; margin: 2rem 0; color: var(--primary-blue);">Add Your Profile</h1>
-            <p style="text-align: center; margin-bottom: 3rem;">Share your journey with the TechWomen Moldova community</p>
-            
-            <!-- Simple Test Form -->
-            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h2>📝 Contact Form (Coming Soon)</h2>
-                <p>Complete mentor and mentee registration forms will be available here soon!</p>
-                
-                <form name="contact" method="POST" data-netlify="true">
-                    <input type="hidden" name="form-name" value="contact" />
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <label>Your Name:</label>
-                        <input type="text" name="name" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;" required>
-                    </div>
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <label>Your Email:</label>
-                        <input type="email" name="email" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;" required>
-                    </div>
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <label>Message:</label>
-                        <textarea name="message" rows="4" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+        <main>
+            <div class="container">
+                <h1
+                    style="
+                        text-align: center;
+                        margin: 2rem 0;
+                        color: var(--primary-blue);
+                    "
+                >
+                    Add Your Profile
+                </h1>
+                <p style="text-align: center; margin-bottom: 3rem">
+                    Share your journey with the TechWomen Moldova community
+                </p>
+
+                <!-- Simple Test Form -->
+                <div
+                    style="
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background: white;
+                        padding: 2rem;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    "
+                >
+                    <h2>📝 Contact Form (Coming Soon)</h2>
+                    <p>
+                        Complete mentor and mentee registration forms will be
+                        available here soon!
+                    </p>
+
+                    <form
+                        name="contact"
+                        netlify
+                        method="POST"
+                        data-netlify="true"
+                    >
+                        <input type="hidden" name="form-name" value="contact" />
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your Name:</label>
+                            <input
+                                type="text"
+                                name="name"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your Email:</label>
+                            <input
+                                type="email"
+                                name="email"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Message:</label>
+                            <textarea
+                                name="message"
+                                rows="4"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 TechWomen Moldova. Celebrating 5 years of empowering women in tech.</p>
-        </div>
-    </footer>
-</body>
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; Built with ❤️ by the ArtsyDevs</p>
+            </div>
+        </footer>
+    </body>
 </html>
