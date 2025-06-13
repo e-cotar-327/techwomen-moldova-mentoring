@@ -1,0 +1,30 @@
+﻿[
+  {
+    "id": "mentee-001",
+    "name": "Ana Ionescu",
+    "title": "Junior Developer",
+    "company": "StartupMD",
+    "year": "2022",
+    "domain": "Frontend Development",
+    "linkedin": "https://linkedin.com/in/anaionescu",
+    "mentor": "Maria Popescu",
+    "story": "Through the mentoring program, I gained confidence in my coding abilities and learned valuable career advice.",
+    "image": "/src/assets/images/profiles/ana-ionescu.jpg",
+    "status": "approved",
+    "dateAdded": "2025-06-13"
+  },
+  {
+    "id": "mentee-002",
+    "name": "Cristina Lupu",
+    "title": "UX Designer",
+    "company": "Design Studio",
+    "year": "2023",
+    "domain": "UX Design",
+    "linkedin": "https://linkedin.com/in/cristinalupu",
+    "mentor": "Elena Constantinescu",
+    "story": "My mentor helped me transition from graphic design to UX design and land my dream job.",
+    "image": "/src/assets/images/profiles/cristina-lupu.jpg",
+    "status": "approved",
+    "dateAdded": "2025-06-13"
+  }
+]

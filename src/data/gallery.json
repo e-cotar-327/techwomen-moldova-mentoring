@@ -1,0 +1,18 @@
+﻿[
+  {
+    "id": "gallery-001",
+    "title": "2020 Kickoff Event",
+    "year": "2020",
+    "description": "Launch of the TechWomen Moldova mentoring program",
+    "image": "/src/assets/images/gallery/2020-kickoff.jpg",
+    "category": "events"
+  },
+  {
+    "id": "gallery-002",
+    "title": "2023 Annual Celebration",
+    "year": "2023",
+    "description": "Celebrating our mentors and mentees achievements",
+    "image": "/src/assets/images/gallery/2023-celebration.jpg",
+    "category": "celebrations"
+  }
+]
