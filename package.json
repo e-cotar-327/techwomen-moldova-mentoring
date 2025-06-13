@@ -1,30 +1,30 @@
 ﻿{
-  "name": "techwomen-moldova-mentoring",
-  "version": "1.0.0",
-  "description": "TechWomen Moldova 5th Anniversary Celebration Website",
-  "main": "public/index.html",
-  "scripts": {
-    "dev": "live-server public --port=8080 --open=/",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "build": "echo 'Static site - no build step required'",
-    "deploy": "echo 'Deployment handled by Netlify'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/your-username/techwomen-moldova-mentoring.git"
-  },
-  "keywords": [
-    "techwomen",
-    "moldova",
-    "mentoring",
-    "celebration",
-    "profiles"
-  ],
-  "author": "TechWomen Moldova Team",
-  "license": "MIT",
-  "devDependencies": {
-    "live-server": "^1.2.2",
-    "prettier": "^3.0.0"
-  }
+    "name": "techwomen-moldova-mentoring",
+    "version": "1.0.0",
+    "description": "TechWomen Moldova 5th Anniversary Celebration Website",
+    "main": "public/index.html",
+    "scripts": {
+        "dev": "live-server --port=8080 --open=/public/",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "build": "echo 'Static site - no build step required'",
+        "deploy": "echo 'Deployment handled by Netlify'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/e-cotar-327/techwomen-moldova-mentoring.git"
+    },
+    "keywords": [
+        "techwomen",
+        "moldova",
+        "mentoring",
+        "celebration",
+        "profiles"
+    ],
+    "author": "TechWomen Moldova Team",
+    "license": "MIT",
+    "devDependencies": {
+        "live-server": "^1.2.2",
+        "prettier": "^3.0.0"
+    }
 }
