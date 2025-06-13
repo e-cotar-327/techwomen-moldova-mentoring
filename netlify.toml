@@ -2,7 +2,7 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22.16.0"
 
 # Form handling
 [forms]
