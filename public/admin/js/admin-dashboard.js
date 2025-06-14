@@ -94,7 +94,7 @@
             this.showLoading(true);
 
             const response = await fetch(
-                `https://api.netlify.com/api/v1/forms/${this.settings.formId}/submissions`,
+                `https://api.netlify.com/api/v1/forms/${this.settings.formId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${this.settings.netlifyToken}`,
