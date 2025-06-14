@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TechWomen Moldova - Admin Dashboard</title>
-        <link rel="stylesheet" href="../public/css/main.css" />
+        <link rel="stylesheet" href="../css/main.css" />
         <link rel="stylesheet" href="css/admin.css" />
     </head>
     <body>
@@ -24,7 +24,7 @@
                                 class="nav-link active"
                                 data-section="pending"
                             >
-                                📋 Pending Submissions
+                                рџ“‹ Pending Submissions
                                 <span id="pending-count" class="count">0</span>
                             </a>
                         </li>
@@ -34,7 +34,7 @@
                                 class="nav-link"
                                 data-section="approved"
                             >
-                                ✅ Approved Profiles
+                                вњ… Approved Profiles
                                 <span id="approved-count" class="count">0</span>
                             </a>
                         </li>
@@ -44,7 +44,7 @@
                                 class="nav-link"
                                 data-section="rejected"
                             >
-                                ❌ Rejected Submissions
+                                вќЊ Rejected Submissions
                                 <span id="rejected-count" class="count">0</span>
                             </a>
                         </li>
@@ -54,7 +54,7 @@
                                 class="nav-link"
                                 data-section="analytics"
                             >
-                                📊 Analytics
+                                рџ“Љ Analytics
                             </a>
                         </li>
                         <li>
@@ -63,7 +63,7 @@
                                 class="nav-link"
                                 data-section="settings"
                             >
-                                ⚙️ Settings
+                                вљ™пёЏ Settings
                             </a>
                         </li>
                     </ul>
@@ -71,16 +71,16 @@
 
                 <div class="admin-actions">
                     <button id="refresh-data" class="btn btn-primary">
-                        🔄 Refresh Data
+                        рџ”„ Refresh Data
                     </button>
                     <button id="export-data" class="btn btn-secondary">
-                        📥 Export Data
+                        рџ“Ґ Export Data
                     </button>
                     <a
                         href="../public/index.html"
                         class="btn btn-outline"
                         target="_blank"
-                        >👀 View Website</a
+                        >рџ‘Ђ View Website</a
                     >
                 </div>
             </aside>
@@ -93,7 +93,7 @@
                     <div class="admin-status">
                         <span id="last-sync">Last sync: Never</span>
                         <div id="sync-indicator" class="sync-indicator offline">
-                            ●
+                            в—Џ
                         </div>
                     </div>
                 </header>
@@ -106,7 +106,7 @@
 
                 <!-- Error State -->
                 <div id="error-state" class="error-state" style="display: none">
-                    <h3>⚠️ Connection Error</h3>
+                    <h3>вљ пёЏ Connection Error</h3>
                     <p id="error-message">
                         Unable to connect to Netlify Forms API
                     </p>
@@ -125,10 +125,10 @@
                                 class="btn btn-success"
                                 disabled
                             >
-                                ✅ Approve All
+                                вњ… Approve All
                             </button>
                             <button id="bulk-actions" class="btn btn-outline">
-                                📋 Bulk Actions
+                                рџ“‹ Bulk Actions
                             </button>
                         </div>
                     </div>
@@ -283,10 +283,10 @@
                         </div>
 
                         <button id="save-settings" class="btn btn-primary">
-                            💾 Save Settings
+                            рџ’ѕ Save Settings
                         </button>
                         <button id="test-connection" class="btn btn-secondary">
-                            🔗 Test Connection
+                            рџ”— Test Connection
                         </button>
                     </div>
                 </section>
@@ -306,13 +306,13 @@
 
                     <div class="modal-actions">
                         <button id="modal-approve" class="btn btn-success">
-                            ✅ Approve
+                            вњ… Approve
                         </button>
                         <button id="modal-reject" class="btn btn-danger">
-                            ❌ Reject
+                            вќЊ Reject
                         </button>
                         <button id="modal-edit" class="btn btn-outline">
-                            ✏️ Edit Before Approval
+                            вњЏпёЏ Edit Before Approval
                         </button>
                     </div>
 
@@ -346,25 +346,29 @@
             style="display: none"
         >
             <div class="section-header">
-                <h2>🔐 Secure Dashboard Settings</h2>
+                <h2>рџ”ђ Secure Dashboard Settings</h2>
                 <p class="security-notice">
-                    🛡️ All credentials are stored securely in your browser only
+                    рџ›ЎпёЏ All credentials are stored securely in your browser
+                    only
                 </p>
             </div>
 
             <div class="settings-form">
                 <div class="security-warning">
-                    <h4>🔒 Security Notice</h4>
+                    <h4>рџ”’ Security Notice</h4>
                     <ul>
                         <li>
-                            ✅ Credentials stored in browser localStorage only
-                        </li>
-                        <li>✅ Never transmitted to GitHub or other servers</li>
-                        <li>
-                            ✅ Automatically cleared when you clear browser data
+                            вњ… Credentials stored in browser localStorage only
                         </li>
                         <li>
-                            ⚠️ You'll need to re-enter credentials on new
+                            вњ… Never transmitted to GitHub or other servers
+                        </li>
+                        <li>
+                            вњ… Automatically cleared when you clear browser
+                            data
+                        </li>
+                        <li>
+                            вљ пёЏ You'll need to re-enter credentials on new
                             devices
                         </li>
                     </ul>
@@ -381,13 +385,13 @@
                         class="form-input"
                     />
                     <small>
-                        🔗 Get from:
+                        рџ”— Get from:
                         <a
                             href="https://app.netlify.com/user/applications#personal-access-tokens"
                             target="_blank"
                             >Netlify User Settings</a
                         >
-                        <br />📖
+                        <br />рџ“–
                         <a href="#instructions"
                             >View detailed setup instructions</a
                         >
@@ -403,9 +407,9 @@
                         class="form-input"
                     />
                     <small>
-                        🔗 Find in: Netlify Site → Forms → [Your Form] → URL
-                        contains form ID
-                        <br />Example: forms/60a1b2c3d4e5f6789 → ID is
+                        рџ”— Find in: Netlify Site в†’ Forms в†’ [Your Form] в†’
+                        URL contains form ID
+                        <br />Example: forms/60a1b2c3d4e5f6789 в†’ ID is
                         "60a1b2c3d4e5f6789"
                     </small>
                 </div>
@@ -422,10 +426,10 @@
 
                 <div class="settings-actions">
                     <button id="save-settings" class="btn btn-primary">
-                        💾 Save Settings Securely
+                        рџ’ѕ Save Settings Securely
                     </button>
                     <button id="test-connection" class="btn btn-secondary">
-                        🔗 Test Connection
+                        рџ”— Test Connection
                     </button>
                 </div>
 

@@ -45,10 +45,10 @@ build/
 # ============================================================================
 
 # NEVER commit admin credentials or sensitive data
-admin/.env*
-admin/config.js
-admin/credentials.*
-admin/secrets.*
+public/admin/.env*
+public/admin/config.js
+public/admin/credentials.*
+public/admin/secrets.*
 admin/local-settings.json
 admin/tokens.*
 
@@ -100,3 +100,10 @@ admin/my-credentials.*
 !admin/js/admin-ui.js
 !admin/index.html
 !admin/SECURITY.md
+
+# Admin dashboard now in public/admin/ for deployment
+# But still protect sensitive files
+public/admin/.env*
+public/admin/credentials.*
+public/admin/secrets.*
+
