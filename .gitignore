@@ -2,25 +2,101 @@
 node_modules/
 npm-debug.log*
 
-# Environment variables
-.env
-.env.local
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Netlify
-.netlify/
-
-# IDE files
+# Editor directories and files
 .vscode/
 .idea/
 *.swp
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
+*.swo
+*~
 
 # Temporary files
 *.tmp
 *.temp
+.cache/
+
+# Environment variables (if you add any later)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs (for future use)
+dist/
+build/
+
+# Netlify
+.netlify/
+
+# Logs
+*.log
+
+# ============================================================================
+# SECURITY - TechWomen Moldova Admin Dashboard
+# ============================================================================
+
+# NEVER commit admin credentials or sensitive data
+admin/.env*
+admin/config.js
+admin/credentials.*
+admin/secrets.*
+admin/local-settings.json
+admin/tokens.*
+
+# Generic sensitive files
+*.token
+*.key
+*.secret
+*-credentials.*
+*-secrets.*
+
+# Admin local development files
+.admin-local/
+admin-secrets/
+local-admin-config/
+
+# Environment variables for admin
+.env.admin
+.env.netlify
+NETLIFY_TOKEN
+FORM_ID
+
+# Browser security files (if any developer accidentally creates them)
+admin/js/credentials.js
+admin/js/config.js
+admin/js/secrets.js
+
+# Admin backup files that might contain sensitive data
+admin/backup-*.json
+admin/export-*.json
+
+# Personal admin notes that might contain credentials
+admin/notes.txt
+admin/setup-notes.*
+admin/my-credentials.*
+
+# Security: Any file with these patterns
+*password*
+*secret*
+*credential*
+*token*
+*key*
+*auth*
+
+# But allow the safe admin files
+!admin/dashboard.html
+!admin/css/
+!admin/js/admin-dashboard.js
+!admin/js/admin-api.js
+!admin/js/admin-ui.js
+!admin/index.html
+!admin/SECURITY.md

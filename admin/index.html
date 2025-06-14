@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechWomen Moldova - Admin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #95a5a6;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        .feature-list {
+            text-align: left;
+            margin: 2rem 0;
+        }
+        .feature-list li {
+            margin: 0.5rem 0;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>🎛️ TechWomen Moldova Admin</h1>
+        <p>Manage your mentoring program website content</p>
+        
+        <ul class="feature-list">
+            <li>✅ Review new profile submissions</li>
+            <li>✅ Approve/reject mentor and mentee profiles</li>
+            <li>✅ Manage existing profiles</li>
+            <li>✅ View submission analytics</li>
+            <li>✅ Export data and reports</li>
+        </ul>
+        
+        <div>
+            <a href="dashboard.html" class="btn">🚀 Open Dashboard</a>
+            <a href="../public/index.html" class="btn btn-secondary" target="_blank">👀 View Website</a>
+        </div>
+        
+        <p style="margin-top: 2rem; font-size: 0.9rem;">
+            <strong>First time?</strong> Check the setup instructions to configure your Netlify credentials.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!-- SECURE Settings Section for dashboard.html -->
+<section id="settings-section" class="admin-section" style="display: none;">
+    <div class="section-header">
+        <h2>🔐 Secure Dashboard Settings</h2>
+        <p class="security-notice">🛡️ All credentials are stored securely in your browser only</p>
+    </div>
+    
+    <div class="settings-form">
+        <div class="security-warning">
+            <h4>🔒 Security Notice</h4>
+            <ul>
+                <li>✅ Credentials stored in browser localStorage only</li>
+                <li>✅ Never transmitted to GitHub or other servers</li>
+                <li>✅ Automatically cleared when you clear browser data</li>
+                <li>⚠️ You'll need to re-enter credentials on new devices</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="netlify-token">Netlify Personal Access Token:</label>
+            <input type="password" id="netlify-token" placeholder="Enter token (stored securely in browser)" class="form-input">
+            <small>
+                🔗 Get from: <a href="https://app.netlify.com/user/applications#personal-access-tokens" target="_blank">Netlify User Settings</a>
+                <br>📖 <a href="#instructions">View detailed setup instructions</a>
+            </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="form-id">Contact Form ID:</label>
+            <input type="text" id="form-id" placeholder="Form ID from Netlify dashboard" class="form-input">
+            <small>
+                🔗 Find in: Netlify Site → Forms → [Your Form] → URL contains form ID
+                <br>Example: forms/60a1b2c3d4e5f6789 → ID is "60a1b2c3d4e5f6789"
+            </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="auto-refresh">Auto-refresh interval:</label>
+            <select id="auto-refresh" class="form-select">
+                <option value="0">Manual only</option>
+                <option value="30">30 seconds</option>
+                <option value="60" selected>1 minute</option>
+                <option value="300">5 minutes</option>
+            </select>
+        </div>
+        
+        <div class="settings-actions">
+            <button id="save-settings" class="btn btn-primary">💾 Save Settings Securely</button>
+            <button id="test-connection" class="btn btn-secondary">🔗 Test Connection</button>
+        </div>
+        
+        <div class="security-actions">
+            <h4>Security Actions</h4>
+            <p>Clear all stored credentials if switching users or for security:</p>
+            <!-- Clear button will be added by JavaScript -->
+        </div>
+    </div>
+</section>
