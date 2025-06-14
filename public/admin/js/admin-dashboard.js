@@ -103,6 +103,8 @@ class SecureAdminDashboard {
                     },
                 }
             );
+
+            // Read response as text first
             const text = await response.text();
             console.log('Raw response:', text);
 
@@ -110,7 +112,8 @@ class SecureAdminDashboard {
                 throw new Error(`Netlify API error: ${response.status}`);
             }
 
-            const submissions = await response.json();
+            // Parse the text as JSON (instead of response.json())
+            const submissions = JSON.parse(text);
             this.submissions = submissions.filter(
                 (sub) => !this.isProcessed(sub.id)
             );
