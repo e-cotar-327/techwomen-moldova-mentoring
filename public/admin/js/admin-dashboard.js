@@ -1,4 +1,4 @@
-﻿class SecureAdminDashboard {
+class SecureAdminDashboard {
     constructor() {
         this.submissions = [];
         this.approvedProfiles = { mentors: [], mentees: [] };
