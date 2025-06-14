@@ -103,6 +103,8 @@ class SecureAdminDashboard {
                     },
                 }
             );
+            const text = await response.text();
+            console.log('Raw response:', text);
 
             if (!response.ok) {
                 throw new Error(`Netlify API error: ${response.status}`);
