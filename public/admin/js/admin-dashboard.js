@@ -97,9 +97,9 @@ class SecureAdminDashboard {
                 `https://api.netlify.com/api/v1/forms/${this.settings.formId}/submissions`,
                 {
                     headers: {
-                        Authorization: `Bearer ${this.settings.netlifyToken}`,
+                        'Authorization': `Bearer ${this.settings.netlifyToken}`,
                         'Content-Type': 'application/json',
-                        Accept: 'application/json',
+                        'Accept': 'application/json',
                     },
                 }
             );
