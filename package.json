@@ -4,7 +4,7 @@
     "description": "TechWomen Moldova 5th Anniversary Celebration Website",
     "main": "public/index.html",
     "scripts": {
-        "dev": "live-server --port=8080 --open=/public/",
+        "dev": "live-server public --port=8080 --open=/",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "build": "echo 'Static site - no build step required'",
