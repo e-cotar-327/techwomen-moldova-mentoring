@@ -331,7 +331,57 @@ class SecureAdminDashboard {
     }
 
     renderPendingSubmissions() {
-        // Implementation for rendering submissions
+        const container = document.getElementById('pending-submissions');
+
+        if (this.submissions.length === 0) {
+            container.innerHTML = `
+            <div class="empty-state">
+                <h3>🎉 All caught up!</h3>
+                <p>No pending submissions to review.</p>
+                <button onclick="adminDashboard.refreshData()" class="btn btn-primary">Check for New Submissions</button>
+            </div>
+        `;
+            return;
+        }
+
+        container.innerHTML = this.submissions
+            .map((submission) => {
+                const data = submission.data;
+                const createdDate = new Date(
+                    submission.created_at
+                ).toLocaleDateString();
+
+                return `
+            <div class="submission-card" data-id="${submission.id}">
+                <div class="submission-header">
+                    <h3>${data.name || 'Unnamed Submission'}</h3>
+                    <div class="submission-meta">
+                        <span class="role-badge unknown">Contact Form</span>
+                        <span class="date">${createdDate}</span>
+                    </div>
+                </div>
+                
+                <div class="submission-details">
+                    <p><strong>Email:</strong> ${data.email || 'Not provided'}</p>
+                    <p><strong>Message:</strong> ${data.message ? data.message.substring(0, 150) + '...' : 'No message'}</p>
+                    <p><strong>Submitted:</strong> ${createdDate}</p>
+                </div>
+
+                <div class="submission-actions">
+                    <button class="btn btn-success" onclick="adminDashboard.approveSubmission('${submission.id}')">
+                        ✅ Approve
+                    </button>
+                    <button class="btn btn-danger" onclick="adminDashboard.rejectSubmission('${submission.id}')">
+                        ❌ Reject
+                    </button>
+                    <button class="btn btn-outline" onclick="adminDashboard.viewSubmission('${submission.id}')">
+                        👀 View Details
+                    </button>
+                </div>
+            </div>
+        `;
+            })
+            .join('');
     }
 
     isProcessed(submissionId) {
