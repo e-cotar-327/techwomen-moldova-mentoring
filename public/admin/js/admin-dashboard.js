@@ -94,10 +94,12 @@ class SecureAdminDashboard {
             this.showLoading(true);
 
             const response = await fetch(
-                `https://api.netlify.com/api/v1/forms/${this.settings.formId}`,
+                `https://api.netlify.com/api/v1/forms/${this.settings.formId}/submissions`,
                 {
                     headers: {
                         Authorization: `Bearer ${this.settings.netlifyToken}`,
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
                     },
                 }
             );
