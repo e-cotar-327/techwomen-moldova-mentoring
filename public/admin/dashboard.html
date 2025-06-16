@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TechWomen Moldova - Admin Dashboard</title>
+        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="css/admin.css" />
+    </head>
+    <body>
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-logo">
+                    <h2>TechWomen Moldova</h2>
+                    <p>Admin Dashboard</p>
+                </div>
+
+                <nav class="admin-nav">
+                    <ul>
+                        <li>
+                            <a
+                                href="#pending"
+                                class="nav-link active"
+                                data-section="pending"
+                            >
+                                рџ“‹ Pending Submissions
+                                <span id="pending-count" class="count">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#approved"
+                                class="nav-link"
+                                data-section="approved"
+                            >
+                                вњ… Approved Profiles
+                                <span id="approved-count" class="count">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#rejected"
+                                class="nav-link"
+                                data-section="rejected"
+                            >
+                                вќЊ Rejected Submissions
+                                <span id="rejected-count" class="count">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#analytics"
+                                class="nav-link"
+                                data-section="analytics"
+                            >
+                                рџ“Љ Analytics
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#settings"
+                                class="nav-link"
+                                data-section="settings"
+                            >
+                                вљ™пёЏ Settings
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="admin-actions">
+                    <button id="refresh-data" class="btn btn-primary">
+                        рџ”„ Refresh Data
+                    </button>
+                    <button id="export-data" class="btn btn-secondary">
+                        рџ“Ґ Export Data
+                    </button>
+                    <a
+                        href="../public/index.html"
+                        class="btn btn-outline"
+                        target="_blank"
+                        >рџ‘Ђ View Website</a
+                    >
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-main">
+                <!-- Header -->
+                <header class="admin-header">
+                    <h1 id="section-title">Pending Submissions</h1>
+                    <div class="admin-status">
+                        <span id="last-sync">Last sync: Never</span>
+                        <div id="sync-indicator" class="sync-indicator offline">
+                            в—Џ
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading submissions...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="error-state" class="error-state" style="display: none">
+                    <h3>вљ пёЏ Connection Error</h3>
+                    <p id="error-message">
+                        Unable to connect to Netlify Forms API
+                    </p>
+                    <button id="retry-connection" class="btn btn-primary">
+                        Retry Connection
+                    </button>
+                </div>
+
+                <!-- Pending Submissions Section -->
+                <section id="pending-section" class="admin-section">
+                    <div class="section-header">
+                        <h2>New Submissions Awaiting Review</h2>
+                        <div class="section-actions">
+                            <button
+                                id="approve-all"
+                                class="btn btn-success"
+                                disabled
+                            >
+                                вњ… Approve All
+                            </button>
+                            <button id="bulk-actions" class="btn btn-outline">
+                                рџ“‹ Bulk Actions
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="pending-submissions" class="submissions-grid">
+                        <!-- Submissions will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Approved Profiles Section -->
+                <section
+                    id="approved-section"
+                    class="admin-section"
+                    style="display: none"
+                >
+                    <div class="section-header">
+                        <h2>Approved Profiles</h2>
+                        <div class="section-actions">
+                            <input
+                                type="search"
+                                id="approved-search"
+                                placeholder="Search approved profiles..."
+                                class="search-input"
+                            />
+                            <select id="approved-filter" class="filter-select">
+                                <option value="all">All Roles</option>
+                                <option value="mentor">Mentors Only</option>
+                                <option value="mentee">Mentees Only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="approved-profiles" class="profiles-grid">
+                        <!-- Approved profiles will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Rejected Submissions Section -->
+                <section
+                    id="rejected-section"
+                    class="admin-section"
+                    style="display: none"
+                >
+                    <div class="section-header">
+                        <h2>Rejected Submissions</h2>
+                        <p class="section-description">
+                            Submissions that were rejected with reasons
+                        </p>
+                    </div>
+
+                    <div id="rejected-submissions" class="submissions-grid">
+                        <!-- Rejected submissions will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section
+                    id="analytics-section"
+                    class="admin-section"
+                    style="display: none"
+                >
+                    <div class="section-header">
+                        <h2>Submission Analytics</h2>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="stat-card">
+                            <h3>Total Submissions</h3>
+                            <div class="stat-number" id="total-submissions">
+                                0
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>This Week</h3>
+                            <div class="stat-number" id="week-submissions">
+                                0
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Approval Rate</h3>
+                            <div class="stat-number" id="approval-rate">0%</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Active Mentors</h3>
+                            <div class="stat-number" id="active-mentors">0</div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-charts">
+                        <div class="chart-container">
+                            <h3>Submissions Over Time</h3>
+                            <canvas
+                                id="submissions-chart"
+                                width="400"
+                                height="200"
+                            ></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section
+                    id="settings-section"
+                    class="admin-section"
+                    style="display: none"
+                >
+                    <div class="section-header">
+                        <h2>Dashboard Settings</h2>
+                    </div>
+
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="netlify-token"
+                                >Netlify Access Token:</label
+                            >
+                            <input
+                                type="password"
+                                id="netlify-token"
+                                placeholder="Enter your Netlify access token"
+                                class="form-input"
+                            />
+                            <small
+                                >Get this from your Netlify account
+                                settings</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-id">Contact Form ID:</label>
+                            <input
+                                type="text"
+                                id="form-id"
+                                placeholder="Form ID from Netlify Forms"
+                                class="form-input"
+                            />
+                            <small
+                                >Find this in your Netlify Forms
+                                dashboard</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="auto-refresh"
+                                >Auto-refresh interval:</label
+                            >
+                            <select id="auto-refresh" class="form-select">
+                                <option value="0">Manual only</option>
+                                <option value="30">30 seconds</option>
+                                <option value="60" selected>1 minute</option>
+                                <option value="300">5 minutes</option>
+                            </select>
+                        </div>
+
+                        <button id="save-settings" class="btn btn-primary">
+                            рџ’ѕ Save Settings
+                        </button>
+                        <button id="test-connection" class="btn btn-secondary">
+                            рџ”— Test Connection
+                        </button>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Submission Modal -->
+        <div id="submission-modal" class="modal" style="display: none">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Review Submission</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="submission-details"></div>
+
+                    <div class="modal-actions">
+                        <button id="modal-approve" class="btn btn-success">
+                            вњ… Approve
+                        </button>
+                        <button id="modal-reject" class="btn btn-danger">
+                            вќЊ Reject
+                        </button>
+                        <button id="modal-edit" class="btn btn-outline">
+                            вњЏпёЏ Edit Before Approval
+                        </button>
+                    </div>
+
+                    <div
+                        id="reject-reason"
+                        class="reject-reason"
+                        style="display: none"
+                    >
+                        <label for="rejection-reason"
+                            >Reason for rejection:</label
+                        >
+                        <textarea
+                            id="rejection-reason"
+                            placeholder="Enter reason for rejection..."
+                            class="form-textarea"
+                        ></textarea>
+                        <button id="confirm-reject" class="btn btn-danger">
+                            Confirm Rejection
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/admin-dashboard.js"></script>
+        <script src="js/admin-api.js"></script>
+        <script src="js/admin-ui.js"></script>
+    </body>
+</html>
