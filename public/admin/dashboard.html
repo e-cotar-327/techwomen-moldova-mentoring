@@ -24,7 +24,7 @@
                                 class="nav-link active"
                                 data-section="pending"
                             >
-                                рџ“‹ Pending Submissions
+                                Pending Submissions
                                 <span id="pending-count" class="count">0</span>
                             </a>
                         </li>
@@ -34,7 +34,7 @@
                                 class="nav-link"
                                 data-section="approved"
                             >
-                                вњ… Approved Profiles
+                                Approved Profiles
                                 <span id="approved-count" class="count">0</span>
                             </a>
                         </li>
@@ -44,7 +44,7 @@
                                 class="nav-link"
                                 data-section="rejected"
                             >
-                                вќЊ Rejected Submissions
+                                Rejected Submissions
                                 <span id="rejected-count" class="count">0</span>
                             </a>
                         </li>
@@ -54,7 +54,7 @@
                                 class="nav-link"
                                 data-section="analytics"
                             >
-                                рџ“Љ Analytics
+                                Analytics
                             </a>
                         </li>
                         <li>
@@ -63,7 +63,7 @@
                                 class="nav-link"
                                 data-section="settings"
                             >
-                                вљ™пёЏ Settings
+                                Settings
                             </a>
                         </li>
                     </ul>
@@ -71,16 +71,16 @@
 
                 <div class="admin-actions">
                     <button id="refresh-data" class="btn btn-primary">
-                        рџ”„ Refresh Data
+                        Refresh Data
                     </button>
                     <button id="export-data" class="btn btn-secondary">
-                        рџ“Ґ Export Data
+                        Export Data
                     </button>
                     <a
                         href="../public/index.html"
                         class="btn btn-outline"
                         target="_blank"
-                        >рџ‘Ђ View Website</a
+                        >View Website</a
                     >
                 </div>
             </aside>
@@ -92,9 +92,10 @@
                     <h1 id="section-title">Pending Submissions</h1>
                     <div class="admin-status">
                         <span id="last-sync">Last sync: Never</span>
-                        <div id="sync-indicator" class="sync-indicator offline">
-                            в—Џ
-                        </div>
+                        <div
+                            id="sync-indicator"
+                            class="sync-indicator offline"
+                        ></div>
                     </div>
                 </header>
 
@@ -106,7 +107,7 @@
 
                 <!-- Error State -->
                 <div id="error-state" class="error-state" style="display: none">
-                    <h3>вљ пёЏ Connection Error</h3>
+                    <h3>Connection Error</h3>
                     <p id="error-message">
                         Unable to connect to Netlify Forms API
                     </p>
@@ -125,10 +126,10 @@
                                 class="btn btn-success"
                                 disabled
                             >
-                                вњ… Approve All
+                                Approve All
                             </button>
                             <button id="bulk-actions" class="btn btn-outline">
-                                рџ“‹ Bulk Actions
+                                Bulk Actions
                             </button>
                         </div>
                     </div>
@@ -283,10 +284,10 @@
                         </div>
 
                         <button id="save-settings" class="btn btn-primary">
-                            рџ’ѕ Save Settings
+                            Save Settings
                         </button>
                         <button id="test-connection" class="btn btn-secondary">
-                            рџ”— Test Connection
+                            Test Connection
                         </button>
                     </div>
                 </section>
@@ -306,13 +307,13 @@
 
                     <div class="modal-actions">
                         <button id="modal-approve" class="btn btn-success">
-                            вњ… Approve
+                            Approve
                         </button>
                         <button id="modal-reject" class="btn btn-danger">
-                            вќЊ Reject
+                            Reject
                         </button>
                         <button id="modal-edit" class="btn btn-outline">
-                            вњЏпёЏ Edit Before Approval
+                            Edit Before Approval
                         </button>
                     </div>
 
