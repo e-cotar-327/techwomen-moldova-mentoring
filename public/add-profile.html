@@ -59,78 +59,6 @@
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                     "
                 >
-                    <h2>📝 Contact Form (Coming Soon)</h2>
-                    <p>
-                        Complete mentor and mentee registration forms will be
-                        available here soon!
-                    </p>
-
-                    <form
-                        name="contact"
-                        netlify
-                        method="POST"
-                        data-netlify="true"
-                    >
-                        <input type="hidden" name="form-name" value="contact" />
-
-                        <div style="margin-bottom: 1rem">
-                            <label>Your Name:</label>
-                            <input
-                                type="text"
-                                name="name"
-                                style="
-                                    width: 100%;
-                                    padding: 0.5rem;
-                                    margin-top: 0.5rem;
-                                "
-                                required
-                            />
-                        </div>
-
-                        <div style="margin-bottom: 1rem">
-                            <label>Your Email:</label>
-                            <input
-                                type="email"
-                                name="email"
-                                style="
-                                    width: 100%;
-                                    padding: 0.5rem;
-                                    margin-top: 0.5rem;
-                                "
-                                required
-                            />
-                        </div>
-
-                        <div style="margin-bottom: 1rem">
-                            <label>Message:</label>
-                            <textarea
-                                name="message"
-                                rows="4"
-                                style="
-                                    width: 100%;
-                                    padding: 0.5rem;
-                                    margin-top: 0.5rem;
-                                "
-                                required
-                            ></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-                <!-- Simple Test Form -->
-                <div
-                    style="
-                        max-width: 600px;
-                        margin: 0 auto;
-                        background: white;
-                        padding: 2rem;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                    "
-                >
                     <h2>📝 Testimonials</h2>
                     <p>Want to share something?</p>
 
@@ -145,6 +73,13 @@
                             name="form-name"
                             value="testimonials"
                         />
+
+                        <div style="display: none">
+                            <label
+                                >Don't fill this out if you're human:
+                                <input name="bot-field" />
+                            </label>
+                        </div>
 
                         <div style="margin-bottom: 1rem">
                             <label>Your Name:</label>
@@ -222,6 +157,13 @@
                             value="personas"
                         />
 
+                        <div style="display: none">
+                            <label
+                                >Don't fill this out if you're human:
+                                <input name="bot-field" />
+                            </label>
+                        </div>
+
                         <div style="margin-bottom: 1rem">
                             <label>Your name: *</label>
                             <input
@@ -268,7 +210,6 @@
                                     id="year2021"
                                     name="years"
                                     value="2021"
-                                    required
                                 />
                                 <label for="year2021">2021</label>
 
@@ -309,7 +250,7 @@
                         <div style="margin-bottom: 1rem">
                             <div id="domainField" style="display: none">
                                 <label for="domain">Domain: *</label>
-                                <select id="domain" name="domain" required>
+                                <select id="domain" name="domain">
                                     <option value="">Select a domain</option>
                                     <option value="devops">DevOps</option>
                                     <option value="digital-marketing">
