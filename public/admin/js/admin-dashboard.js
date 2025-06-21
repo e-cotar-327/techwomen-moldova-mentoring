@@ -493,6 +493,7 @@ class SecureAdminDashboard {
         // Detect which form was submitted
         const formName = data['form-name'] || submission.form_name;
 
+
         if (formName === 'testimonials') {
             // Handle testimonial form
             return {
