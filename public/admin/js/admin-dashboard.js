@@ -307,19 +307,34 @@ class SecureAdminDashboard {
         }
 
         try {
+            // Store original submission data before processing
+            this.storeOriginalSubmission(submission);
+
             // Create profile object from submission
             const profile = this.createProfileFromSubmission(submission);
 
             // Mark as processed locally
             this.markAsProcessed(submissionId, 'approved');
 
+            // Add to approved profiles locally
+            if (profile.role === 'mentor') {
+                this.approvedProfiles.mentors.push(profile);
+            } else if (profile.role === 'mentee') {
+                this.approvedProfiles.mentees.push(profile);
+            }
+
             // Remove from pending submissions
             this.submissions = this.submissions.filter(
                 (s) => s.id !== submissionId
             );
 
-            // Re-render the submissions
-            this.renderPendingSubmissions();
+            // Re-render the current section
+            if (this.currentSection === 'pending') {
+                this.renderPendingSubmissions();
+            } else if (this.currentSection === 'approved') {
+                this.renderApprovedProfiles();
+            }
+
             this.updateCounts();
 
             this.showNotification(
@@ -409,8 +424,6 @@ class SecureAdminDashboard {
                             <div class="detail-section" style="margin-bottom: 1.5rem;">
                                 <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">Role Information</h4>
                                 <p><strong>Role:</strong> ${submission.data.role}</p>
-                                <p><strong>Title:</strong> ${submission.data.title || 'Not provided'}</p>
-                                <p><strong>Company:</strong> ${submission.data.company || 'Not provided'}</p>
                                 <p><strong>Domain:</strong> ${submission.data.domain || 'Not provided'}</p>
                             </div>
                             `
@@ -418,11 +431,11 @@ class SecureAdminDashboard {
                             }
                             
                             ${
-                                submission.data.bio || submission.data.message
+                                submission.data.message
                                     ? `
                             <div class="detail-section" style="margin-bottom: 1.5rem;">
-                                <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">${submission.data.bio ? 'Bio/Story' : 'Message'}</h4>
-                                <p style="background: #f8f9fa; padding: 1rem; border-radius: 6px; white-space: pre-wrap;">${submission.data.bio || submission.data.message}</p>
+                                <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">${submission.data.message}</h4>
+                                <p style="background: #f8f9fa; padding: 1rem; border-radius: 6px; white-space: pre-wrap;">${submission.data.message}</p>
                             </div>
                             `
                                     : ''
@@ -477,28 +490,41 @@ class SecureAdminDashboard {
     createProfileFromSubmission(submission) {
         const data = submission.data;
 
-        // Determine if this should be a mentor or mentee based on available data
-        const role = data.role || 'contact';
+        // Detect which form was submitted
+        const formName = data['form-name'] || data.netlifyFormName;
 
-        return {
-            id: `${role}-${Date.now()}`,
-            name: data.name || '',
-            title: data.title || 'Community Member',
-            company: data.company || '',
-            year: data.year || new Date().getFullYear().toString(),
-            domain: data.domain || 'General',
-            linkedin: data.linkedin || '',
-            email: data.email || '',
-            bio: data.bio || data.message || '',
-            story: data.story || data.message || '', // for mentees
-            mentor: data.mentor || '', // for mentees
-            image:
-                data.image || '/assets/images/defaults/profile-placeholder.jpg',
-            status: 'approved',
-            dateAdded: new Date().toISOString().split('T')[0],
-            submissionId: submission.id,
-            submittedAt: submission.created_at,
-        };
+        if (formName === 'testimonials') {
+            // Handle testimonial form
+            return {
+                id: `testimonial-${Date.now()}`,
+                name: data.name || '',
+                email: data.email || '',
+                message: data.message || '',
+                status: 'approved',
+                dateAdded: new Date().toISOString().split('T')[0],
+                submissionId: submission.id,
+                submittedAt: submission.created_at,
+            };
+        } else {
+            // Handle profile form (mentor/mentee)
+            const role = data.role || '';
+
+            return {
+                id: `${role}-${Date.now()}`,
+                name: data.name || '',
+                role: data.role || '',
+                years: data.years || [],
+                domain: data.domain || '', // for mentors
+                domainOther: data.domainOther || '', // for mentors
+                email: data.email || '',
+                linkedin: data.linkedin || '',
+                avatar: data.avatar || '😊',
+                status: 'approved',
+                dateAdded: new Date().toISOString().split('T')[0],
+                submissionId: submission.id,
+                submittedAt: submission.created_at,
+            };
+        }
     }
 
     // Mark submission as processed
@@ -640,15 +666,13 @@ class SecureAdminDashboard {
                         <div class="submission-header">
                             <h3>${data.name || 'Unnamed Submission'}</h3>
                             <div class="submission-meta">
-                                <span class="role-badge ${data.role || 'unknown'}">${data.role || 'Contact Form'}</span>
+                                <span class="role-badge ${data.role || 'unknown'}">${data.role || 'Testimonial'}</span>
                                 <span class="date">${createdDate}</span>
                             </div>
                         </div>
                         
                         <div class="submission-details">
                             <p><strong>Email:</strong> ${data.email || 'Not provided'}</p>
-                            ${data.title ? `<p><strong>Title:</strong> ${data.title}</p>` : ''}
-                            ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ''}
                             <p><strong>Message:</strong> ${data.message ? data.message.substring(0, 150) + (data.message.length > 150 ? '...' : '') : 'No message'}</p>
                             <p><strong>Submitted:</strong> ${createdDate}</p>
                         </div>
@@ -668,6 +692,225 @@ class SecureAdminDashboard {
                 `;
             })
             .join('');
+    }
+
+    // Render approved profiles section
+    renderApprovedProfiles() {
+        const container = document.getElementById('approved-profiles');
+        if (!container) return;
+
+        const { mentors, mentees } = this.approvedProfiles;
+        const allApproved = [...mentors, ...mentees];
+
+        if (allApproved.length === 0) {
+            container.innerHTML = `
+            <div class="empty-state">
+                <h3>📋 No Approved Profiles</h3>
+                <p>Approved profiles will appear here.</p>
+            </div>
+        `;
+            return;
+        }
+
+        container.innerHTML = allApproved
+            .map(
+                (profile) => `
+        <div class="profile-card approved" data-id="${profile.id}">
+            <div class="profile-header">
+                <span class="avatar">${profile.avatar || '👤'}</span>
+                <h3>${profile.name}</h3>
+                <span class="role-badge ${profile.role}">${profile.role}</span>
+            </div>
+            
+            <div class="profile-details">
+                <p><strong>Email:</strong> ${profile.email}</p>
+                ${profile.domain ? `<p><strong>Domain:</strong> ${profile.domain}</p>` : ''}
+                ${profile.years ? `<p><strong>Years:</strong> ${Array.isArray(profile.years) ? profile.years.join(', ') : profile.years}</p>` : ''}
+                ${profile.linkedin ? `<p><strong>LinkedIn:</strong> <a href="${profile.linkedin}" target="_blank">View Profile</a></p>` : ''}
+                <p><strong>Approved:</strong> ${profile.dateAdded || 'Unknown'}</p>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn btn-outline" onclick="adminDashboard.editProfile('${profile.id}')">
+                    ✏️ Edit
+                </button>
+                <button class="btn btn-danger" onclick="adminDashboard.removeProfile('${profile.id}')">
+                    🗑️ Remove
+                </button>
+            </div>
+        </div>
+    `
+            )
+            .join('');
+    }
+
+    // Render rejected submissions section
+    renderRejectedSubmissions() {
+        const container = document.getElementById('rejected-submissions');
+        if (!container) return;
+
+        const submissionStatus = JSON.parse(
+            localStorage.getItem('submissionStatus') || '{}'
+        );
+        const rejectionReasons = JSON.parse(
+            localStorage.getItem('rejectionReasons') || '{}'
+        );
+
+        const rejectedSubmissions = Object.entries(submissionStatus)
+            .filter(([id, status]) => status.status === 'rejected')
+            .map(([id, status]) => ({
+                id,
+                ...status,
+                reason: rejectionReasons[id] || 'No reason provided',
+            }));
+
+        if (rejectedSubmissions.length === 0) {
+            container.innerHTML = `
+            <div class="empty-state">
+                <h3>🚫 No Rejected Submissions</h3>
+                <p>Rejected submissions will appear here.</p>
+            </div>
+        `;
+            return;
+        }
+
+        container.innerHTML = rejectedSubmissions
+            .map(
+                (rejection) => `
+        <div class="submission-card rejected" data-id="${rejection.id}">
+            <div class="submission-header">
+                <h3>Submission ${rejection.id.substring(0, 8)}...</h3>
+                <div class="submission-meta">
+                    <span class="status-badge rejected">Rejected</span>
+                    <span class="date">${new Date(rejection.timestamp).toLocaleDateString()}</span>
+                </div>
+            </div>
+            
+            <div class="submission-details">
+                <p><strong>Rejected:</strong> ${new Date(rejection.timestamp).toLocaleString()}</p>
+                <p><strong>Reason:</strong> ${rejection.reason}</p>
+                <p><strong>Processed by:</strong> ${rejection.processedBy}</p>
+            </div>
+
+            <div class="submission-actions">
+                <button class="btn btn-success" onclick="adminDashboard.unrejectSubmission('${rejection.id}')">
+                    🔄 Restore to Pending
+                </button>
+                <button class="btn btn-danger" onclick="adminDashboard.permanentlyDelete('${rejection.id}')">
+                    🗑️ Delete Permanently
+                </button>
+            </div>
+        </div>
+    `
+            )
+            .join('');
+    }
+
+    // Get processed submissions with their original data
+    getProcessedSubmissions() {
+        // This is a placeholder - you'll need to implement a way to store
+        // the original submission data when processing
+        const submissionStatus = JSON.parse(
+            localStorage.getItem('submissionStatus') || '{}'
+        );
+        const originalSubmissions = JSON.parse(
+            localStorage.getItem('originalSubmissions') || '{}'
+        );
+
+        return Object.entries(submissionStatus).map(([id, status]) => ({
+            id,
+            ...status,
+            originalData: originalSubmissions[id] || {},
+        }));
+    }
+
+    // Store original submission data before processing
+    storeOriginalSubmission(submission) {
+        const originalSubmissions = JSON.parse(
+            localStorage.getItem('originalSubmissions') || '{}'
+        );
+        originalSubmissions[submission.id] = submission.data;
+        localStorage.setItem(
+            'originalSubmissions',
+            JSON.stringify(originalSubmissions)
+        );
+    }
+
+    // Helper methods for managing approved/rejected items
+    unrejectSubmission(submissionId) {
+        // Remove from rejected status
+        const submissionStatus = JSON.parse(
+            localStorage.getItem('submissionStatus') || '{}'
+        );
+        delete submissionStatus[submissionId];
+        localStorage.setItem(
+            'submissionStatus',
+            JSON.stringify(submissionStatus)
+        );
+
+        // Remove from processed list
+        const processed = JSON.parse(
+            localStorage.getItem('processedSubmissions') || '[]'
+        );
+        const updatedProcessed = processed.filter((id) => id !== submissionId);
+        localStorage.setItem(
+            'processedSubmissions',
+            JSON.stringify(updatedProcessed)
+        );
+
+        // Remove rejection reason
+        const rejectionReasons = JSON.parse(
+            localStorage.getItem('rejectionReasons') || '{}'
+        );
+        delete rejectionReasons[submissionId];
+        localStorage.setItem(
+            'rejectionReasons',
+            JSON.stringify(rejectionReasons)
+        );
+
+        this.showNotification('Submission restored to pending', 'success');
+        this.renderRejectedSubmissions();
+        this.updateCounts();
+    }
+
+    permanentlyDelete(submissionId) {
+        if (
+            confirm(
+                'Are you sure you want to permanently delete this submission? This cannot be undone.'
+            )
+        ) {
+            // Remove from all storage
+            const submissionStatus = JSON.parse(
+                localStorage.getItem('submissionStatus') || '{}'
+            );
+            delete submissionStatus[submissionId];
+            localStorage.setItem(
+                'submissionStatus',
+                JSON.stringify(submissionStatus)
+            );
+
+            const rejectionReasons = JSON.parse(
+                localStorage.getItem('rejectionReasons') || '{}'
+            );
+            delete rejectionReasons[submissionId];
+            localStorage.setItem(
+                'rejectionReasons',
+                JSON.stringify(rejectionReasons)
+            );
+
+            const originalSubmissions = JSON.parse(
+                localStorage.getItem('originalSubmissions') || '{}'
+            );
+            delete originalSubmissions[submissionId];
+            localStorage.setItem(
+                'originalSubmissions',
+                JSON.stringify(originalSubmissions)
+            );
+
+            this.showNotification('Submission permanently deleted', 'warning');
+            this.renderRejectedSubmissions();
+            this.updateCounts();
+        }
     }
 
     // Show notification function
@@ -742,6 +985,22 @@ class SecureAdminDashboard {
         }
 
         this.currentSection = sectionName;
+
+        // Load section-specific data and render
+        switch (sectionName) {
+            case 'pending':
+                this.renderPendingSubmissions();
+                break;
+            case 'approved':
+                this.renderApprovedProfiles();
+                break;
+            case 'rejected':
+                this.renderRejectedSubmissions();
+                break;
+            case 'analytics':
+                this.renderAnalytics();
+                break;
+        }
 
         // Update page title
         const titles = {

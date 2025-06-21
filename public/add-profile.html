@@ -337,16 +337,16 @@
                                 </select>
 
                                 <div
-                                    id="otherDomainField"
+                                    id="domainOtherField"
                                     style="display: none; margin-top: 10px"
                                 >
-                                    <label for="otherDomain"
+                                    <label for="domainOther"
                                         >Please specify:</label
                                     >
                                     <input
                                         type="text"
-                                        id="otherDomain"
-                                        name="otherDomain"
+                                        id="domainOther"
+                                        name="domainOther"
                                         placeholder="Enter your domain"
                                     />
                                 </div>
@@ -387,7 +387,7 @@
                                 name="avatar"
                                 class="emoji-input"
                                 placeholder="😊"
-                                maxlength="2"
+                                maxlength="1"
                                 required
                                 title="Please enter an emoji to represent yourself"
                             />
@@ -429,13 +429,13 @@
                 .getElementById('domain')
                 .addEventListener('change', function () {
                     const otherField =
-                        document.getElementById('otherDomainField');
+                        document.getElementById('domainOtherField');
                     if (this.value === 'other') {
                         otherField.style.display = 'block';
-                        document.getElementById('otherDomain').required = true;
+                        document.getElementById('domainOther').required = true;
                     } else {
                         otherField.style.display = 'none';
-                        document.getElementById('otherDomain').required = false;
+                        document.getElementById('domainOther').required = false;
                     }
                 });
 

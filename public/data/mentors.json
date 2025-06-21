@@ -1,30 +1,28 @@
-﻿[
-  {
-    "id": "mentor-001",
-    "name": "Maria Popescu",
-    "title": "Senior Software Engineer",
-    "company": "TechCorp Moldova",
-    "year": "2020",
-    "domain": "Software Development",
-    "linkedin": "https://linkedin.com/in/mariapopescu",
-    "email": "maria@example.com",
-    "bio": "Passionate about mentoring young women in tech and helping them navigate their career paths.",
-    "image": "/src/assets/images/profiles/maria-popescu.jpg",
-    "status": "approved",
-    "dateAdded": "2025-06-13"
-  },
-  {
-    "id": "mentor-002",
-    "name": "Elena Constantinescu",
-    "title": "Product Manager",
-    "company": "Innovation Labs",
-    "year": "2021",
-    "domain": "Product Management",
-    "linkedin": "https://linkedin.com/in/elenaconstantinescu",
-    "email": "elena@example.com",
-    "bio": "Experienced product manager with a passion for technology and mentoring.",
-    "image": "/src/assets/images/profiles/elena-constantinescu.jpg",
-    "status": "approved",
-    "dateAdded": "2025-06-13"
-  }
+[
+    {
+        "id": "mentor-001",
+        "name": "Elena Cotar",
+        "role": "mentor",
+        "years": "2025",
+        "domain": "Software Development",
+        "domainOther": "",
+        "email": "e.cotar327@gmail.com",
+        "linkedin": "https://linkedin.com/in/mariapopescu",
+        "avatar": "😊",
+        "status": "approved",
+        "dateAdded": "2025-06-13"
+    },
+    {
+        "id": "mentor-002",
+        "name": "Elena Cotar",
+        "role": "mentor",
+        "years": "[2024, 2025]",
+        "domain": "Software Development",
+        "domainOther": "",
+        "email": "e.cotar327@gmail.com",
+        "linkedin": "https://linkedin.com/in/mariapopescu",
+        "avatar": "😊",
+        "status": "approved",
+        "dateAdded": "2025-06-13"
+    }
 ]
