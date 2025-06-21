@@ -120,6 +120,287 @@
                         </button>
                     </form>
                 </div>
+                <!-- Simple Test Form -->
+                <div
+                    style="
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background: white;
+                        padding: 2rem;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    "
+                >
+                    <h2>📝 Testimonials</h2>
+                    <p>Want to share something?</p>
+
+                    <form
+                        name="testimonials"
+                        netlify
+                        method="POST"
+                        data-netlify="true"
+                    >
+                        <input
+                            type="hidden"
+                            name="form-name"
+                            value="testimonials"
+                        />
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your Name:</label>
+                            <input
+                                type="text"
+                                name="name"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your Email:</label>
+                            <input
+                                type="email"
+                                name="email"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Message:</label>
+                            <textarea
+                                name="message"
+                                rows="4"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Add testimonials
+                        </button>
+                    </form>
+                </div>
+                <!-- Simple Test Form -->
+                <div
+                    style="
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background: white;
+                        padding: 2rem;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    "
+                >
+                    <h2>📝 Contact Form (Coming Soon)</h2>
+                    <p>
+                        Complete mentor and mentee registration forms will be
+                        available here soon!
+                    </p>
+
+                    <form
+                        name="personas"
+                        netlify
+                        method="POST"
+                        data-netlify="true"
+                    >
+                        <input
+                            type="hidden"
+                            name="form-name"
+                            value="personas"
+                        />
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your name: *</label>
+                            <input
+                                type="text"
+                                name="name"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <fieldset>
+                                <legend>Select your role: *</legend>
+
+                                <input
+                                    type="radio"
+                                    id="mentor"
+                                    name="role"
+                                    value="mentor"
+                                    required
+                                />
+                                <label for="mentor">Mentor</label>
+
+                                <input
+                                    type="radio"
+                                    id="mentee"
+                                    name="role"
+                                    value="mentee"
+                                />
+                                <label for="mentee">Mentee</label>
+                            </fieldset>
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <fieldset>
+                                <legend>Year(s) of participation: *</legend>
+
+                                <input
+                                    type="checkbox"
+                                    id="year2021"
+                                    name="years"
+                                    value="2021"
+                                    required
+                                />
+                                <label for="year2021">2021</label>
+
+                                <input
+                                    type="checkbox"
+                                    id="year2022"
+                                    name="years"
+                                    value="2022"
+                                />
+                                <label for="year2022">2022</label>
+
+                                <input
+                                    type="checkbox"
+                                    id="year2023"
+                                    name="years"
+                                    value="2023"
+                                />
+                                <label for="year2023">2023</label>
+
+                                <input
+                                    type="checkbox"
+                                    id="year2024"
+                                    name="years"
+                                    value="2024"
+                                />
+                                <label for="year2024">2024</label>
+
+                                <input
+                                    type="checkbox"
+                                    id="year2025"
+                                    name="years"
+                                    value="2025"
+                                />
+                                <label for="year2025">2025</label>
+                            </fieldset>
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <div id="domainField" style="display: none">
+                                <label for="domain">Domain: *</label>
+                                <select id="domain" name="domain" required>
+                                    <option value="">Select a domain</option>
+                                    <option value="devops">DevOps</option>
+                                    <option value="digital-marketing">
+                                        Digital/Social Media Marketing
+                                    </option>
+                                    <option value="hr-recruiting">
+                                        HR/Recruiting
+                                    </option>
+                                    <option value="it-project-management">
+                                        IT Project Management
+                                    </option>
+                                    <option value="product-management">
+                                        Product Management
+                                    </option>
+                                    <option value="quality-assurance">
+                                        Quality Assurance
+                                    </option>
+                                    <option value="software-development">
+                                        Software Development
+                                    </option>
+                                    <option value="ux-ui-design">
+                                        UX/UI/Graphic Design
+                                    </option>
+                                    <option value="other">Other</option>
+                                </select>
+
+                                <div
+                                    id="otherDomainField"
+                                    style="display: none; margin-top: 10px"
+                                >
+                                    <label for="otherDomain"
+                                        >Please specify:</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="otherDomain"
+                                        name="otherDomain"
+                                        placeholder="Enter your domain"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label>Your Email:</label>
+                            <input
+                                type="email"
+                                name="email"
+                                style="
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                    margin-top: 0.5rem;
+                                "
+                                required
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label for="linkedin">LinkedIn:</label>
+                            <input
+                                type="url"
+                                id="linkedin"
+                                name="linkedin"
+                                placeholder="https://www.linkedin.com/in/yourprofile"
+                                pattern="https://.*linkedin\.com/.*"
+                                title="Please enter a valid LinkedIn URL"
+                            />
+                        </div>
+
+                        <div style="margin-bottom: 1rem">
+                            <label for="avatar">Choose your avatar: *</label>
+                            <input
+                                type="text"
+                                id="avatar"
+                                name="avatar"
+                                class="emoji-input"
+                                placeholder="😊"
+                                maxlength="2"
+                                required
+                                title="Please enter an emoji to represent yourself"
+                            />
+                            <div class="emoji-hint">
+                                Pick any emoji that represents you!
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </main>
 
@@ -128,5 +409,42 @@
                 <p>&copy; Built with ❤️ by the ArtsyDevs</p>
             </div>
         </footer>
+        <script>
+            // Show domain field when mentor is selected
+            function toggleDomainField() {
+                const mentorRadio = document.querySelector(
+                    'input[name="role"][value="mentor"]'
+                );
+                const domainField = document.getElementById('domainField');
+
+                if (mentorRadio && mentorRadio.checked) {
+                    domainField.style.display = 'block';
+                } else {
+                    domainField.style.display = 'none';
+                }
+            }
+
+            // Show other domain input when "Other" is selected
+            document
+                .getElementById('domain')
+                .addEventListener('change', function () {
+                    const otherField =
+                        document.getElementById('otherDomainField');
+                    if (this.value === 'other') {
+                        otherField.style.display = 'block';
+                        document.getElementById('otherDomain').required = true;
+                    } else {
+                        otherField.style.display = 'none';
+                        document.getElementById('otherDomain').required = false;
+                    }
+                });
+
+            // Listen for role changes (you'll need to add this to your role radio buttons)
+            document.addEventListener('change', function (e) {
+                if (e.target.name === 'role') {
+                    toggleDomainField();
+                }
+            });
+        </script>
     </body>
 </html>
