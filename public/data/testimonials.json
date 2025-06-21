@@ -1,18 +1,16 @@
 ﻿[
-  {
-    "id": "testimonial-001",
-    "name": "Ana Ionescu",
-    "role": "Mentee",
-    "year": "2022",
-    "message": "The mentoring program changed my career trajectory completely. My mentor's guidance was invaluable!",
-    "featured": true
-  },
-  {
-    "id": "testimonial-002",
-    "name": "Maria Popescu",
-    "role": "Mentor",
-    "year": "2020",
-    "message": "Being a mentor has been incredibly rewarding. Watching mentees grow and succeed is amazing!",
-    "featured": true
-  }
+    {
+        "id": "testimonial-001",
+        "name": "Ana Ionescu",
+        "email": "mentee@mail.com",
+        "message": "The mentoring program changed my career trajectory completely. My mentor's guidance was invaluable!",
+        "featured": true
+    },
+    {
+        "id": "testimonial-001",
+        "name": "Ana Ionescu",
+        "email": "mentee@mail.com",
+        "message": "The mentoring program changed my career trajectory completely. My mentor's guidance was invaluable!",
+        "featured": true
+    }
 ]
