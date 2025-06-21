@@ -491,7 +491,8 @@ class SecureAdminDashboard {
         const data = submission.data;
 
         // Detect which form was submitted
-        const formName = data['form-name'] || data.netlifyFormName;
+        const formName = data['form-name'] || submission.form_name;
+
 
         if (formName === 'testimonials') {
             // Handle testimonial form
