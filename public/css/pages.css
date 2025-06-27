@@ -1,0 +1,18 @@
+.add-testimonial-button {
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: rgb(54, 54, 232);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.testimonials .buttons-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.testimonials .container {
+    height: 85vh;
+    background-color: rgb(224, 224, 224);
+}
