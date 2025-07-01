@@ -41,7 +41,7 @@ body {
 }
 
 /* Navigation */
-.navbar {
+/* .navbar {
     background: var(--white);
     box-shadow: var(--box-shadow);
     position: sticky;
@@ -92,7 +92,7 @@ body {
 
 .nav-cta:hover {
     background: #1d4ed8;
-}
+} */
 
 /* Hero Section */
 .hero {
@@ -207,7 +207,7 @@ body {
 }
 
 /* Footer */
-.footer {
+/* .footer {
     background: var(--primary-gray);
     color: var(--white);
     text-align: center;
@@ -216,7 +216,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+} */
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
