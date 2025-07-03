@@ -1,21 +1,4 @@
-.add-testimonial-button {
-    padding: 1rem;
-    border-radius: 2rem;
-    background-color: rgb(54, 54, 232);
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.testimonials .buttons-container {
-    text-align: center;
-    padding: 2rem;
-}
-
-.testimonials .container {
-    height: 85vh;
-    background-color: rgb(224, 224, 224);
-}
+/* Mentors/Mentees */
 
 .mentors-mentees {
     background:
@@ -23,7 +6,7 @@
         linear-gradient(135deg, #ca53e9 0%, #3241ce 100%);
     color: var(--white);
     position: relative;
-    background-repeat: repeat-y;
+    background-repeat: repeat;
     background-position: center;
     min-height: 85vh;
     padding-bottom: 4.5rem;
@@ -45,7 +28,6 @@
 }
 
 .button-wrapper button {
-    text-decoration: none;
     background-image: linear-gradient(270deg, #c953e9 0%, #3842cf 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -94,4 +76,53 @@
 
 #footer {
     margin-bottom: 7.8125rem;
+}
+/* Testimonials */
+
+.testimonials {
+    width: 100%;
+    background: url('../assets/dots_pattern_for_white_bg.png');
+    background-repeat: repeat;
+    background-position: center;
+    padding: 5.75rem 0;
+}
+
+.testimonials h2 {
+    max-width: var(--container-max-width);
+    font-size: 3.5rem;
+    color: #481eb2;
+    font-weight: 700;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    padding: 0 3rem;
+}
+
+.testimonials .container {
+    max-width: var(--container-max-width);
+    min-height: 100rem;
+    background-color: rgba(131, 131, 131, 0.52);
+    padding: 0 3rem;
+}
+.leave-footprint-container {
+    padding: 1.625rem 0;
+    background-color: #481eb2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.leave-footprint-container button {
+    background-image: linear-gradient(270deg, #c953e9 0%, #3842cf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+}
+
+body.page-testimonials .footer {
+    background-color: var(--white);
+    color: #7849da;
 }
