@@ -31,6 +31,15 @@ body {
     color: var(--primary-gray);
     background-color: var(--white);
     min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -39,26 +48,25 @@ body {
     padding: 0 var(--spacing-md);
 }
 .hero {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%);
+    flex: 1;
+    background:
+        url('../assets/dots_pattern.png'),
+        linear-gradient(135deg, #ca53e9 0%, #3241ce 100%);
     color: var(--white);
     padding: var(--spacing-xl) 0;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 85vh;
+    /* height: 85vh; */
+    position: relative;
+    overflow: hidden;
 }
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
-    font-weight: 700;
-}
-
 .hero p {
-    font-size: 1.2rem;
+    font-size: 4rem;
+    font-weight: 700;
     margin-bottom: var(--spacing-xl);
-    opacity: 0.9;
+    line-height: 100%;
 }
 
 .hero-stats {
@@ -85,10 +93,20 @@ body {
 }
 
 .hero-button {
+    background-color: var(--white);
+    padding: 1.25rem 1.875rem;
+    border-radius: 2.5rem;
+    display: inline-block;
+}
+
+.hero-button a {
     text-decoration: none;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 2rem;
+    background-image: linear-gradient(270deg, #c953e9 0%, #3842cf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: normal;
 }
 
 /* Features Section */
@@ -154,13 +172,21 @@ body {
     .nav-menu {
         display: none;
     }
-
     .hero h1 {
         font-size: 2rem;
     }
-
     .hero-stats {
         flex-direction: column;
         gap: var(--spacing-md);
     }
+}
+
+#navbar, #footer {
+    flex-shrink: 0;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
