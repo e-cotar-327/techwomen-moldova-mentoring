@@ -19,23 +19,26 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Toogle mentors/mentees containers
-const mentorsBtn = document.querySelector('.mentors-btn');
-const menteesBtn = document.querySelector('.mentees-btn');
-const mentorsContainer = document.querySelector('.mentors');
-const menteesContainer = document.querySelector('.mentees');
 
-const showMentorsContainer = () => {
-    mentorsContainer.classList.remove('hidden');
-    menteesContainer.classList.add('hidden');
-    mentorsBtn.classList.add('active');
-    menteesBtn.classList.remove('active');
-};
-const showMenteesContainer = () => {
-    menteesContainer.classList.remove('hidden');
-    mentorsContainer.classList.add('hidden');
-    mentorsBtn.classList.remove('active');
-    menteesBtn.classList.add('active');
-};
+if (window.location.pathname.includes('mentors-mentees.html')) {
+    const mentorsBtn = document.querySelector('.mentors-btn');
+    const menteesBtn = document.querySelector('.mentees-btn');
+    const mentorsContainer = document.querySelector('.mentors');
+    const menteesContainer = document.querySelector('.mentees');
 
-mentorsBtn.addEventListener('click', showMentorsContainer);
-menteesBtn.addEventListener('click', showMenteesContainer);
+    const showMentorsContainer = () => {
+        mentorsContainer.classList.remove('hidden');
+        menteesContainer.classList.add('hidden');
+        mentorsBtn.classList.add('active');
+        menteesBtn.classList.remove('active');
+    };
+    const showMenteesContainer = () => {
+        menteesContainer.classList.remove('hidden');
+        mentorsContainer.classList.add('hidden');
+        mentorsBtn.classList.remove('active');
+        menteesBtn.classList.add('active');
+    };
+
+    mentorsBtn.addEventListener('click', showMentorsContainer);
+    menteesBtn.addEventListener('click', showMenteesContainer);
+}
